@@ -2,6 +2,8 @@
 
 AI should increase the quality of your reasoning, not remove the productive struggle that creates it.
 
+The role boundaries in [LEARNER_CONTRACT.md](LEARNER_CONTRACT.md) govern all AI-assisted work in this repository.
+
 ## ChatGPT role
 
 Use ChatGPT as a teacher, mentor, system-design interviewer, code reviewer, concept explainer, and learning planner. Ask it to challenge assumptions, find knowledge gaps, design exercises, and review architecture decisions.

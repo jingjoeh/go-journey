@@ -1,5 +1,7 @@
 # Learning Rules
 
+These rules complement the ownership boundaries in [LEARNER_CONTRACT.md](LEARNER_CONTRACT.md).
+
 1. Understand before copying code.
 2. Prefer the standard library before frameworks.
 3. Every major concept needs an exercise.

@@ -4,7 +4,7 @@ This repository is a self-directed curriculum for growing from competent Go deve
 
 ## How to use this repository
 
-1. Read [LEARNING_RULES.md](LEARNING_RULES.md) and choose the next phase in [ROADMAP.md](ROADMAP.md).
+1. Read the [Learner Contract](LEARNER_CONTRACT.md) and [Learning Rules](LEARNING_RULES.md), then choose the next phase in [ROADMAP.md](ROADMAP.md).
 2. Study the relevant topic README and keep your own understanding in `notes.md`.
 3. Complete the exercises before opening a challenge solution or asking an AI for complete code.
 4. Work in each lab's `starter/` directory. Run its tests, then compare with `solution/` only after making a serious attempt.
@@ -28,6 +28,7 @@ The curriculum is intentionally standard-library-first. Libraries and infrastruc
 - `projects/`: three progressively more realistic services.
 - `interview/`: question banks and mock-interview practice.
 - `templates/`: reusable lesson, lab, review, project, and incident formats.
+- `LEARNER_CONTRACT.md`: ownership boundaries for the learner, mentor, and Codex.
 
 ## Definition of success
 
