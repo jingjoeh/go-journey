@@ -2,10 +2,12 @@
 
 Update weekly. Confidence must be backed by a recent implementation, debugging session, review, or explanation.
 
+**Last updated:** 2026-08-19
+
 | Module | Status | Confidence | Exercises | Notes |
 |---|---|---:|---:|---|
-| Go Fundamentals | Learning | 1/5 | 0/10 | |
-| Concurrency | Not Started | 1/5 | 0/10 | |
+| Go Fundamentals | Review | 1/5 | 0/10 | Topic coverage self-reported; reviewed evidence pending |
+| Concurrency | Practicing | 1/5 | 0/10 | Fundamentals covered; production-grade design is current focus |
 | HTTP Backend | Not Started | 1/5 | 0/10 | |
 | PostgreSQL | Not Started | 1/5 | 0/10 | |
 | Architecture | Not Started | 1/5 | 0/10 | |
@@ -14,6 +16,116 @@ Update weekly. Confidence must be backed by a recent implementation, debugging s
 | Production Engineering | Not Started | 1/5 | 0/10 | |
 | Performance | Not Started | 1/5 | 0/10 | |
 | System Design | Not Started | 1/5 | 0/10 | |
+
+Confidence and exercise counts remain unchanged until implementation evidence and mentor review are linked below.
+
+## Current Focus
+
+- [ ] Production-grade concurrency design
+  - [ ] Worker-pool error and cancellation design
+  - [ ] Preventing goroutine leaks and deadlocks
+  - [ ] Choosing worker pool vs `errgroup`
+  - [ ] Code-review and reasoning exercises
+
+## Needs Reinforcement
+
+- [ ] Method Set vs Method Call distinction
+- [ ] Closure state and lifetime
+- [ ] Designing concurrent flows without overcomplicating primitives
+
+## Coverage Snapshot — 2026-08-19
+
+The items in this snapshot are learner-reported topic coverage. Checked items mean “studied or practiced,” not “mentor-reviewed mastery.”
+
+### Go Foundations / Type System
+
+- [x] Value semantics / function arguments copy values
+- [x] Array vs Slice
+- [x] Slice descriptor / backing array / len / cap / reslice / append
+- [x] Defined types / aliases / untyped constants
+- [x] Struct value semantics
+- [x] Pointer basics
+- [x] Value receiver vs pointer receiver
+- [x] Method Set
+- [x] Interface satisfaction / implicit implementation
+- [x] Interface static type / concrete type / concrete value
+- [x] Type assertion
+- [x] Type switch
+- [x] nil interface / typed nil
+
+### Error Handling
+
+- [x] `error` as interface
+- [x] Sentinel errors
+- [x] Custom error types
+- [x] `fmt.Errorf`
+- [x] `%w` error wrapping
+- [x] `errors.Is`
+- [x] `errors.As`
+- [x] Error translation across repository/service/handler
+- [x] Error handling vs logging responsibility
+
+### Functions / Runtime Semantics
+
+- [x] `defer`
+- [x] `defer` LIFO
+- [x] `defer` argument evaluation
+- [x] `defer` + pointer / closure
+- [x] named returns + `defer`
+- [x] `panic` / `recover`
+- [x] error vs panic
+- [x] Function values
+- [x] Anonymous functions
+- [x] Closures / captured variables
+- [x] Callback pattern
+- [x] Transaction-style callbacks
+
+### Memory
+
+- [x] Stack vs Heap mental model
+- [x] Escape Analysis
+- [x] Pointer does not imply heap
+- [x] Closure escape
+- [x] GC reachability
+- [x] GC roots mental model
+- [x] Reference cycles
+- [x] Memory retention via slices/maps
+
+### Concurrency
+
+- [x] Goroutines
+- [x] `WaitGroup`
+- [x] Unbuffered channels
+- [x] Buffered channels
+- [x] `close` / comma-ok / `range`
+- [x] Channel ownership
+- [x] nil channels
+- [x] `select` / `default` / timeout
+- [x] `context.WithCancel`
+- [x] `context.WithTimeout` / deadlines
+- [x] Context propagation / parent-child cancellation
+- [x] Data races
+- [x] `Mutex`
+- [x] `RWMutex`
+- [x] Atomic basics / CAS
+- [x] `sync.Once`
+- [x] `sync.Cond` basics
+- [x] Race detector
+- [x] Happens-before basics
+- [x] Goroutine leak / deadlock / data race distinction
+- [x] Worker Pool fundamentals
+- [x] Bounded concurrency / backpressure
+- [x] `errgroup` fundamentals
+
+## Evidence Register
+
+| Area | Evidence | Review status |
+|---|---|---|
+| Go Foundations / Type System | Add links to learner code, tests, or reflection | Pending |
+| Error Handling | Add links to learner code, tests, or reflection | Pending |
+| Functions / Runtime Semantics | Add links to learner code, tests, or reflection | Pending |
+| Memory | Add links to learner experiment, escape-analysis output, or reflection | Pending |
+| Concurrency | Add links to learner code, race-detector output, and design review | Pending |
 
 ## Status values
 
