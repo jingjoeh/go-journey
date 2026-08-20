@@ -2,11 +2,11 @@
 
 Update weekly. Confidence must be backed by a recent implementation, debugging session, review, or explanation.
 
-**Last updated:** 2026-08-19
+**Last updated:** 2026-08-20
 
 | Module | Status | Confidence | Exercises | Notes |
 |---|---|---:|---:|---|
-| Go Fundamentals | Review | 1/5 | 0/10 | Topic coverage self-reported; reviewed evidence pending |
+| Go Fundamentals | Review | 1/5 | 1/10 | Lab 01 completed with passing tests and mentor review; broader evidence pending |
 | Concurrency | Practicing | 1/5 | 0/10 | Fundamentals covered; production-grade design is current focus |
 | HTTP Backend | Not Started | 1/5 | 0/10 | |
 | PostgreSQL | Not Started | 1/5 | 0/10 | |
@@ -17,7 +17,7 @@ Update weekly. Confidence must be backed by a recent implementation, debugging s
 | Performance | Not Started | 1/5 | 0/10 | |
 | System Design | Not Started | 1/5 | 0/10 | |
 
-Confidence and exercise counts remain unchanged until implementation evidence and mentor review are linked below.
+Confidence remains unchanged until the evidence demonstrates the capability across the broader module.
 
 ## Current Focus
 
@@ -121,11 +121,17 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 
 | Area | Evidence | Review status |
 |---|---|---|
-| Go Foundations / Type System | Add links to learner code, tests, or reflection | Pending |
+| Go Foundations / Type System | [Lab 01 — learner implementation](labs/01-go-basics/starter/starter.go); `go test ./tests` passed 2026-08-20; mentor reviewed nil/empty input, non-mutation, and idiomatic `range` | Lab accepted |
 | Error Handling | Add links to learner code, tests, or reflection | Pending |
 | Functions / Runtime Semantics | Add links to learner code, tests, or reflection | Pending |
 | Memory | Add links to learner experiment, escape-analysis output, or reflection | Pending |
 | Concurrency | Add links to learner code, race-detector output, and design review | Pending |
+
+## Completed Lab Evidence
+
+| Lab | Date | Learner evidence | Verification | Mentor review |
+|---|---|---|---|---|
+| [Lab 01 — Go Basics](labs/01-go-basics/) | 2026-08-20 | Implemented `SumPositive` manually | `go test ./tests` passed | Completed: nil/empty slice behavior, non-mutating slice iteration, idiomatic `range` |
 
 ## Status values
 
