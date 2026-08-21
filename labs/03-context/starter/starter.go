@@ -6,5 +6,13 @@ import (
 )
 
 func Wait(ctx context.Context, delay time.Duration) error {
-	panic("TODO: implement Wait")
+	t := time.NewTimer(delay)
+	defer t.Stop()
+
+	select {
+	case <-t.C:
+		return nil
+	case <-ctx.Done():
+		return ctx.Err()
+	}
 }
