@@ -2,13 +2,13 @@
 
 Update weekly. Confidence must be backed by a recent implementation, debugging session, review, or explanation.
 
-**Last updated:** 2026-08-21
+**Last updated:** 2026-08-23
 
 | Module | Status | Confidence | Exercises | Notes |
 |---|---|---:|---:|---|
 | Go Fundamentals | Review | 1/5 | 3/10 | Labs 01-03 completed with passing tests and mentor review; broader evidence pending |
 | Concurrency | Practicing | 1/5 | 0/10 | Fundamentals covered; production-grade design is current focus |
-| HTTP Backend | Not Started | 1/5 | 0/10 | |
+| HTTP Backend | Learning | 1/5 | 1/10 | Lab 05 completed with passing tests, mentor review, and reference comparison; broader evidence pending |
 | PostgreSQL | Not Started | 1/5 | 0/10 | |
 | Architecture | Not Started | 1/5 | 0/10 | |
 | Testing | Not Started | 1/5 | 0/10 | |
@@ -124,6 +124,7 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | Go Foundations / Type System | [Lab 01 — learner implementation](labs/01-go-basics/starter/starter.go); `go test ./tests` passed 2026-08-20; mentor reviewed nil/empty input, non-mutation, and idiomatic `range` | Lab accepted |
 | Error Handling | [Lab 02 — learner implementation](labs/02-error-handling/starter/starter.go); `go test ./tests ./starter` and `go vet ./...` passed 2026-08-20; mentor reviewed bounds, sentinel wrapping, and `errors.Is` classification | Lab accepted |
 | Context | [Lab 03 — learner implementation](labs/03-context/starter/starter.go); `go test ./tests ./starter` passed 2026-08-21; mentor reviewed cancellation, deadlines, timer cleanup, and `select` behavior | Lab accepted |
+| HTTP API | [Lab 05 — learner implementation](labs/05-http-api/starter/starter.go); `go test ./tests ./starter` passed 2026-08-23; mentor reviewed HTTP contracts, JSON responses, routing semantics, and API trade-offs | Lab accepted |
 | Functions / Runtime Semantics | Add links to learner code, tests, or reflection | Pending |
 | Memory | Add links to learner experiment, escape-analysis output, or reflection | Pending |
 | Concurrency | Add links to learner code, race-detector output, and design review | Pending |
@@ -135,6 +136,7 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | [Lab 01 — Go Basics](labs/01-go-basics/) | 2026-08-20 | Implemented `SumPositive` manually | `go test ./tests` passed | Completed: nil/empty slice behavior, non-mutating slice iteration, idiomatic `range` |
 | [Lab 02 — Error Handling](labs/02-error-handling/) | 2026-08-20 | Implemented `ParsePort` manually | `go test ./tests ./starter` and `go vet ./...` passed | Completed: decimal parsing, inclusive bounds, sentinel wrapping, and `errors.Is` classification |
 | [Lab 03 — Context: Cancellable Wait](labs/03-context/) | 2026-08-21 | Implemented and iteratively corrected `Wait` manually | `go test ./tests ./starter` passed | PASS: cancellation/deadline semantics, `ctx.Err()`, interruptible timer, cleanup, no goroutine, and `select` behavior |
+| [Lab 05 — HTTP API: Task Handler](labs/05-http-api/) | 2026-08-23 | Implemented HTTP routing and JSON health response | `go test ./tests ./starter` passed; reference comparison completed | PASS: handler semantics, response ordering, status codes, `Allow`, `ServeMux`, and method-aware routing |
 
 ## Status values
 
