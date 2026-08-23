@@ -9,7 +9,7 @@ Update weekly. Confidence must be backed by a recent implementation, debugging s
 | Go Fundamentals | Review | 1/5 | 3/10 | Labs 01-03 completed with passing tests and mentor review; broader evidence pending |
 | Concurrency | Practicing | 1/5 | 0/10 | Fundamentals covered; production-grade design is current focus |
 | HTTP Backend | Learning | 1/5 | 1/10 | Lab 05 completed with passing tests, mentor review, and reference comparison; broader evidence pending |
-| PostgreSQL | Learning | 1/5 | 1/10 | Lab 06 completed with uncached tests, race test, vet, and mentor review; broader database evidence pending |
+| PostgreSQL | Learning | 1/5 | 2/10 | Labs 06-07 completed with uncached tests, race tests, vet, and mentor review; broader database evidence pending |
 | Architecture | Not Started | 1/5 | 0/10 | |
 | Testing | Not Started | 1/5 | 0/10 | |
 | Distributed Systems | Not Started | 1/5 | 0/10 | |
@@ -126,6 +126,7 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | Context | [Lab 03 — learner implementation](labs/03-context/starter/starter.go); `go test ./tests ./starter` passed 2026-08-21; mentor reviewed cancellation, deadlines, timer cleanup, and `select` behavior | Lab accepted |
 | HTTP API | [Lab 05 — learner implementation](labs/05-http-api/starter/starter.go); `go test ./tests ./starter` passed 2026-08-23; mentor reviewed HTTP contracts, JSON responses, routing semantics, and API trade-offs | Lab accepted |
 | PostgreSQL Query Construction | [Lab 06 — learner implementation](labs/06-postgres/starter/starter.go); uncached tests, race test, and vet passed 2026-08-23; mentor reviewed parameterization, pagination bounds, and lab scope | Lab accepted |
+| Transactions | [Lab 07 — learner implementation](labs/07-transactions/starter/starter.go); uncached tests, race test, and vet passed 2026-08-23; mentor reviewed validation, transaction callback behavior, error propagation, and atomic transfer invariant | Lab accepted |
 | Functions / Runtime Semantics | Add links to learner code, tests, or reflection | Pending |
 | Memory | Add links to learner experiment, escape-analysis output, or reflection | Pending |
 | Concurrency | Add links to learner code, race-detector output, and design review | Pending |
@@ -139,6 +140,7 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | [Lab 03 — Context: Cancellable Wait](labs/03-context/) | 2026-08-21 | Implemented and iteratively corrected `Wait` manually | `go test ./tests ./starter` passed | PASS: cancellation/deadline semantics, `ctx.Err()`, interruptible timer, cleanup, no goroutine, and `select` behavior |
 | [Lab 05 — HTTP API: Task Handler](labs/05-http-api/) | 2026-08-23 | Implemented HTTP routing and JSON health response | `go test ./tests ./starter` passed; reference comparison completed | PASS: handler semantics, response ordering, status codes, `Allow`, `ServeMux`, and method-aware routing |
 | [Lab 06 — PostgreSQL: Safe Pagination Query](labs/06-postgres/) | 2026-08-23 | Implemented parameterized query construction and pagination validation | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: placeholders, separate args, default/clamped limit, negative-offset rejection, and deliberate no-database scope |
+| [Lab 07 — Transactions: Atomic Transfer](labs/07-transactions/) | 2026-08-23 | Implemented validation and transfer orchestration through a transaction callback | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: amount validation, debit-before-credit ordering, fail-fast errors, wrapped causes, rollback signaling, and atomicity invariant |
 
 ## Status values
 
