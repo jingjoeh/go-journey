@@ -12,7 +12,12 @@ func TestNormalizeEmail(t *testing.T) {
 		invalid  bool
 	}{
 		{" Alice@EXAMPLE.COM ", "Alice@example.com", false},
-		{"missing", "", true}, {"a@@b", "", true}, {"@host", "", true},
+		{"missing", "", true},
+		{"a@@b", "", true},
+		{"@host", "", true},
+		{"user@", "", true}, // empty domain
+		{"   ", "", true},   // empty after TrimSpace
+		{"USER@EXAMPLE.COM", "USER@example.com", false},
 	}
 	for _, tc := range tests {
 		got, err := target.NormalizeEmail(tc.in)

@@ -7,12 +7,12 @@ Update weekly. Confidence must be backed by a recent implementation, debugging s
 | Module | Status | Confidence | Exercises | Notes |
 |---|---|---:|---:|---|
 | Go Fundamentals | Review | 1/5 | 3/10 | Labs 01-03 completed with passing tests and mentor review; broader evidence pending |
-| Concurrency | Practicing | 1/5 | 0/10 | Fundamentals covered; production-grade design is current focus |
+| Concurrency | Practicing | 1/5 | 1/10 | Lab 04 completed with tests, race safety, mentor review, and documented production trade-offs |
 | HTTP Backend | Learning | 1/5 | 1/10 | Lab 05 completed with passing tests, mentor review, and reference comparison; broader evidence pending |
 | PostgreSQL | Learning | 1/5 | 2/10 | Labs 06-07 completed with uncached tests, race tests, vet, and mentor review; broader database evidence pending |
 | Security | Learning | 1/5 | 1/10 | Lab 08 completed with passing tests and mentor review; broader authentication and security evidence pending |
 | Architecture | Not Started | 1/5 | 0/10 | |
-| Testing | Not Started | 1/5 | 0/10 | |
+| Testing | Learning | 1/5 | 1/10 | Lab 09 completed with uncached tests, race test, vet, mentor review, and debugging evidence |
 | Distributed Systems | Not Started | 1/5 | 0/10 | |
 | Production Engineering | Not Started | 1/5 | 0/10 | |
 | Performance | Not Started | 1/5 | 0/10 | |
@@ -129,9 +129,10 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | PostgreSQL Query Construction | [Lab 06 — learner implementation](labs/06-postgres/starter/starter.go); uncached tests, race test, and vet passed 2026-08-23; mentor reviewed parameterization, pagination bounds, and lab scope | Lab accepted |
 | Transactions | [Lab 07 — learner implementation](labs/07-transactions/starter/starter.go); uncached tests, race test, and vet passed 2026-08-23; mentor reviewed validation, transaction callback behavior, error propagation, and atomic transfer invariant | Lab accepted |
 | Authentication Token Integrity | [Lab 08 — learner implementation](labs/08-auth/starter/starter.go); uncached tests passed 2026-08-24; mentor reviewed HMAC signing, token validation, URL-safe encoding, constant-time comparison, and security guarantees | Lab accepted |
+| Testing / Email Normalization | [Lab 09 — learner implementation](labs/09-testing/starter/starter.go) and [learner tests](labs/09-testing/tests/starter_test.go); uncached tests, race test, and vet passed 2026-08-24; mentor reviewed table-driven boundaries and panic prevention | Lab accepted |
 | Functions / Runtime Semantics | Add links to learner code, tests, or reflection | Pending |
 | Memory | Add links to learner experiment, escape-analysis output, or reflection | Pending |
-| Concurrency | Add links to learner code, race-detector output, and design review | Pending |
+| Concurrency | [Lab 04 — learner implementation](labs/04-concurrency/starter/starter.go); tests, race test, vet, formatting checks, and mentor review passed 2026-08-22; production trade-offs documented in lab notes | Lab accepted |
 
 ## Completed Lab Evidence
 
@@ -140,10 +141,12 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | [Lab 01 — Go Basics](labs/01-go-basics/) | 2026-08-20 | Implemented `SumPositive` manually | `go test ./tests` passed | Completed: nil/empty slice behavior, non-mutating slice iteration, idiomatic `range` |
 | [Lab 02 — Error Handling](labs/02-error-handling/) | 2026-08-20 | Implemented `ParsePort` manually | `go test ./tests ./starter` and `go vet ./...` passed | Completed: decimal parsing, inclusive bounds, sentinel wrapping, and `errors.Is` classification |
 | [Lab 03 — Context: Cancellable Wait](labs/03-context/) | 2026-08-21 | Implemented and iteratively corrected `Wait` manually | `go test ./tests ./starter` passed | PASS: cancellation/deadline semantics, `ctx.Err()`, interruptible timer, cleanup, no goroutine, and `select` behavior |
+| [Lab 04 — Concurrency: Bounded Parallel Map](labs/04-concurrency/) | 2026-08-22 | Implemented a bounded worker pool preserving result order | Tests, race test, vet, `gofmt`, and `git diff --check` passed | PASS: worker bounds, cancellation, goroutine/channel ownership, `WaitGroup`, race safety, and production trade-offs |
 | [Lab 05 — HTTP API: Task Handler](labs/05-http-api/) | 2026-08-23 | Implemented HTTP routing and JSON health response | `go test ./tests ./starter` passed; reference comparison completed | PASS: handler semantics, response ordering, status codes, `Allow`, `ServeMux`, and method-aware routing |
 | [Lab 06 — PostgreSQL: Safe Pagination Query](labs/06-postgres/) | 2026-08-23 | Implemented parameterized query construction and pagination validation | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: placeholders, separate args, default/clamped limit, negative-offset rejection, and deliberate no-database scope |
 | [Lab 07 — Transactions: Atomic Transfer](labs/07-transactions/) | 2026-08-23 | Implemented validation and transfer orchestration through a transaction callback | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: amount validation, debit-before-credit ordering, fail-fast errors, wrapped causes, rollback signaling, and atomicity invariant |
 | [Lab 08 — Authentication: HMAC Token](labs/08-auth/) | 2026-08-24 | Implemented token signing and verification with HMAC-SHA256 and URL-safe Base64 | `go test -count=1 ./...` passed | PASS: input validation, malformed/modified token rejection, `ErrInvalidToken`, constant-time verification, and correct security-property explanation |
+| [Lab 09 — Testing: Normalize Email](labs/09-testing/) | 2026-08-24 | Derived table-driven boundary cases and corrected an initial bug through reasoning without opening the solution | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: trimming, local-part case preservation, domain lowercasing, separator validation, safe indexing, and table-driven design |
 
 ## Status values
 
