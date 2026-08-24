@@ -7,7 +7,7 @@ Update weekly. Confidence must be backed by a recent implementation, debugging s
 | Module | Status | Confidence | Exercises | Notes |
 |---|---|---:|---:|---|
 | Go Fundamentals | Review | 1/5 | 3/10 | Labs 01-03 completed with passing tests and mentor review; broader evidence pending |
-| Concurrency | Practicing | 1/5 | 1/10 | Lab 04 completed with tests, race safety, mentor review, and documented production trade-offs |
+| Concurrency | Practicing | 1/5 | 2/10 | Labs 04 and 10 completed with tests, race safety, mentor review, and documented concurrency reasoning |
 | HTTP Backend | Learning | 1/5 | 1/10 | Lab 05 completed with passing tests, mentor review, and reference comparison; broader evidence pending |
 | PostgreSQL | Learning | 1/5 | 2/10 | Labs 06-07 completed with uncached tests, race tests, vet, and mentor review; broader database evidence pending |
 | Security | Learning | 1/5 | 1/10 | Lab 08 completed with passing tests and mentor review; broader authentication and security evidence pending |
@@ -130,6 +130,7 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | Transactions | [Lab 07 — learner implementation](labs/07-transactions/starter/starter.go); uncached tests, race test, and vet passed 2026-08-23; mentor reviewed validation, transaction callback behavior, error propagation, and atomic transfer invariant | Lab accepted |
 | Authentication Token Integrity | [Lab 08 — learner implementation](labs/08-auth/starter/starter.go); uncached tests passed 2026-08-24; mentor reviewed HMAC signing, token validation, URL-safe encoding, constant-time comparison, and security guarantees | Lab accepted |
 | Testing / Email Normalization | [Lab 09 — learner implementation](labs/09-testing/starter/starter.go) and [learner tests](labs/09-testing/tests/starter_test.go); uncached tests, race test, and vet passed 2026-08-24; mentor reviewed table-driven boundaries and panic prevention | Lab accepted |
+| Caching / Request Coalescing | [Lab 10 — learner implementation](labs/10-caching/starter/starter.go); uncached tests, race test, and vet passed 2026-08-24; learner progressed from a new `inflight` concept to reasoning about mutex lifecycle, channel signaling, and context cancellation together | Lab accepted |
 | Functions / Runtime Semantics | Add links to learner code, tests, or reflection | Pending |
 | Memory | Add links to learner experiment, escape-analysis output, or reflection | Pending |
 | Concurrency | [Lab 04 — learner implementation](labs/04-concurrency/starter/starter.go); tests, race test, vet, formatting checks, and mentor review passed 2026-08-22; production trade-offs documented in lab notes | Lab accepted |
@@ -147,6 +148,7 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | [Lab 07 — Transactions: Atomic Transfer](labs/07-transactions/) | 2026-08-23 | Implemented validation and transfer orchestration through a transaction callback | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: amount validation, debit-before-credit ordering, fail-fast errors, wrapped causes, rollback signaling, and atomicity invariant |
 | [Lab 08 — Authentication: HMAC Token](labs/08-auth/) | 2026-08-24 | Implemented token signing and verification with HMAC-SHA256 and URL-safe Base64 | `go test -count=1 ./...` passed | PASS: input validation, malformed/modified token rejection, `ErrInvalidToken`, constant-time verification, and correct security-property explanation |
 | [Lab 09 — Testing: Normalize Email](labs/09-testing/) | 2026-08-24 | Derived table-driven boundary cases and corrected an initial bug through reasoning without opening the solution | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: trimming, local-part case preservation, domain lowercasing, separator validation, safe indexing, and table-driven design |
+| [Lab 10 — Caching: Stampede-Safe Loader](labs/10-caching/) | 2026-08-24 | Implemented a concurrency-safe cache that coalesces simultaneous loads; developed the new `inflight` concept into an explanation of mutex lifecycle, channel signaling, and context cancellation | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: cache-hit behavior, per-key request coalescing, loader-error handling, waiter cancellation, lock ownership, channel broadcast, and race safety |
 
 ## Status values
 
