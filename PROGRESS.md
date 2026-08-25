@@ -2,7 +2,7 @@
 
 Update weekly. Confidence must be backed by a recent implementation, debugging session, review, or explanation.
 
-**Last updated:** 2026-08-24
+**Last updated:** 2026-08-25
 
 | Module | Status | Confidence | Exercises | Notes |
 |---|---|---:|---:|---|
@@ -15,7 +15,7 @@ Update weekly. Confidence must be backed by a recent implementation, debugging s
 | Testing | Learning | 1/5 | 1/10 | Lab 09 completed with uncached tests, race test, vet, mentor review, and debugging evidence |
 | Distributed Systems | Not Started | 1/5 | 0/10 | |
 | Production Engineering | Not Started | 1/5 | 0/10 | |
-| Performance | Not Started | 1/5 | 0/10 | |
+| Performance | Learning | 1/5 | 1/10 | Lab 13 completed with functional, ownership, benchmark, allocation, and mentor-reviewed evidence |
 | System Design | Not Started | 1/5 | 0/10 | |
 
 Confidence remains unchanged until the evidence demonstrates the capability across the broader module.
@@ -131,6 +131,7 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | Authentication Token Integrity | [Lab 08 — learner implementation](labs/08-auth/starter/starter.go); uncached tests passed 2026-08-24; mentor reviewed HMAC signing, token validation, URL-safe encoding, constant-time comparison, and security guarantees | Lab accepted |
 | Testing / Email Normalization | [Lab 09 — learner implementation](labs/09-testing/starter/starter.go) and [learner tests](labs/09-testing/tests/starter_test.go); uncached tests, race test, and vet passed 2026-08-24; mentor reviewed table-driven boundaries and panic prevention | Lab accepted |
 | Caching / Request Coalescing | [Lab 10 — learner implementation](labs/10-caching/starter/starter.go); uncached tests, race test, and vet passed 2026-08-24; learner progressed from a new `inflight` concept to reasoning about mutex lifecycle, channel signaling, and context cancellation together | Lab accepted |
+| Performance / Deduplication | [Lab 13 — learner implementation](labs/13-performance/starter/starter.go); functional and non-mutation tests passed 2026-08-25; before/after benchmark and measured allocation improvement reviewed; small-input limitation documented | Lab accepted |
 | Functions / Runtime Semantics | Add links to learner code, tests, or reflection | Pending |
 | Memory | Add links to learner experiment, escape-analysis output, or reflection | Pending |
 | Concurrency | [Lab 04 — learner implementation](labs/04-concurrency/starter/starter.go); tests, race test, vet, formatting checks, and mentor review passed 2026-08-22; production trade-offs documented in lab notes | Lab accepted |
@@ -149,6 +150,7 @@ The items in this snapshot are learner-reported topic coverage. Checked items me
 | [Lab 08 — Authentication: HMAC Token](labs/08-auth/) | 2026-08-24 | Implemented token signing and verification with HMAC-SHA256 and URL-safe Base64 | `go test -count=1 ./...` passed | PASS: input validation, malformed/modified token rejection, `ErrInvalidToken`, constant-time verification, and correct security-property explanation |
 | [Lab 09 — Testing: Normalize Email](labs/09-testing/) | 2026-08-24 | Derived table-driven boundary cases and corrected an initial bug through reasoning without opening the solution | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: trimming, local-part case preservation, domain lowercasing, separator validation, safe indexing, and table-driven design |
 | [Lab 10 — Caching: Stampede-Safe Loader](labs/10-caching/) | 2026-08-24 | Implemented a concurrency-safe cache that coalesces simultaneous loads; developed the new `inflight` concept into an explanation of mutex lifecycle, channel signaling, and context cancellation | `go test -count=1 ./...`, `go test -count=1 -race ./...`, and `go vet ./...` passed | PASS: cache-hit behavior, per-key request coalescing, loader-error handling, waiter cancellation, lock ownership, channel broadcast, and race safety |
+| [Lab 13 — Performance: Deduplicate](labs/13-performance/) | 2026-08-25 | Implemented ordered deduplication without mutating the input and measured a preallocation change before/after | Functional tests passed; benchmark and allocation improvement measured | PASS: correctness, input ownership, benchmark comparison, allocation evidence, justified preallocation, and workload-specific interpretation |
 
 ## Status values
 
