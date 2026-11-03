@@ -2,36 +2,133 @@
 
 package tests_test
 
-import "testing"
+import (
+	"bootcamp/15-go-testing-workshop/starter"
+	"context"
+	"errors"
+	"sync"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+)
 
 func TestPostgreSQLCreateOrderSuccess(t *testing.T) {
-	t.Skip("TODO: learner exercise")
 
-	// TODO: Open an isolated test database and insert a product fixture.
-	// TODO: Create an order through PostgreSQLOrderRepository.
-	// TODO: Verify the returned order, persisted row, and remaining stock.
+	db := openTestDatabase(t)
+
+	productID := insertProduct(t, db, "MacBook Pro", 10)
+
+	t.Logf("Created product ID: %d", productID)
+
+	repo := starter.NewPostgreSQLOrderRepository(db)
+
+	order, err := repo.CreateOrder(context.Background(), productID, 3)
+	require.NoError(t, err)
+
+	assert.NotEmpty(t, order.ID)
+	assert.Equal(t, productID, order.ProductID)
+	assert.Equal(t, 3, order.Quantity)
+
+	count := orderCount(t, db, productID)
+	assert.Equal(t, 1, count)
+
+	stock := productStock(t, db, productID)
+	assert.Equal(t, 7, stock)
 }
 
 func TestPostgreSQLCreateOrderOutOfStock(t *testing.T) {
-	t.Skip("TODO: learner exercise")
 
-	// TODO: Insert a product whose stock is lower than the requested quantity.
-	// TODO: Verify ErrOutOfStock.
-	// TODO: Verify both stock and order count remain unchanged.
+	db := openTestDatabase(t)
+
+	productID := insertProduct(t, db, "Macbook Pro", 2)
+
+	repo := starter.NewPostgreSQLOrderRepository(db)
+
+	order, err := repo.CreateOrder(context.Background(), productID, 5)
+
+	require.ErrorIs(t, err, starter.ErrOutOfStock)
+
+	assert.Empty(t, order.ID)
+
+	count := orderCount(t, db, productID)
+	assert.Equal(t, 0, count)
+
+	stock := productStock(t, db, productID)
+	assert.Equal(t, 2, stock)
 }
 
 func TestPostgreSQLCreateOrderRollsBackAfterInsertFailure(t *testing.T) {
-	t.Skip("TODO: learner exercise")
 
-	// TODO: Force the INSERT to fail after the stock UPDATE.
-	// Hint: the orders table rejects non-positive quantities.
-	// TODO: Verify the error and prove that neither partial state change remains.
+	db := openTestDatabase(t)
+	productID := insertProduct(t, db, "Macbook Pro", 3)
+
+	repo := starter.NewPostgreSQLOrderRepository(db)
+	order, err := repo.CreateOrder(context.Background(), productID, -1)
+
+	require.Error(t, err)
+	assert.Empty(t, order.ID)
+
+	count := orderCount(t, db, productID)
+	assert.Equal(t, 0, count)
+
+	stock := productStock(t, db, productID)
+	assert.Equal(t, 3, stock)
 }
 
 func TestPostgreSQLCreateOrderConcurrentLastItem(t *testing.T) {
-	t.Skip("TODO: learner exercise")
 
-	// TODO: Insert one product with stock=1.
-	// TODO: Start two CreateOrder calls concurrently for that same product.
-	// TODO: Verify exactly one success, one ErrOutOfStock, stock=0, and one order row.
+	db := openTestDatabase(t)
+	productID := insertProduct(t, db, "Macbook Pro", 1)
+	repo := starter.NewPostgreSQLOrderRepository(db)
+	service := starter.NewOrderService(repo)
+
+	var err1 error
+	var err2 error
+
+	var order1 starter.Order
+	var order2 starter.Order
+
+	var wg sync.WaitGroup
+
+	wg.Add(2)
+
+	go func() {
+		defer wg.Done()
+		order1, err1 = service.PlaceOrder(context.Background(), productID, 1)
+	}()
+
+	go func() {
+		defer wg.Done()
+		order2, err2 = service.PlaceOrder(context.Background(), productID, 1)
+	}()
+	wg.Wait()
+
+	orders := []starter.Order{order1, order2}
+	errs := []error{err1, err2}
+
+	successCount := 0
+	outOfStockCount := 0
+
+	for i, err := range errs {
+		if err == nil {
+			successCount++
+			assert.Positive(t, orders[i].ID)
+		} else if errors.Is(err, starter.ErrOutOfStock) {
+			outOfStockCount++
+			assert.Empty(t, orders[i].ID)
+		} else {
+			t.Errorf("unexpected error: %v", err)
+		}
+	}
+
+	assert.Equal(t, 1, successCount)
+	assert.Equal(t, 1, outOfStockCount)
+
+	count := orderCount(t, db, productID)
+	stock := productStock(t, db, productID)
+
+	assert.Equal(t, 1, count)
+	assert.Equal(t, 0, stock)
+
 }
